@@ -1,6 +1,5 @@
 package Tarea2.Parte1;
 
-import javax.swing.plaf.synth.SynthUI;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
