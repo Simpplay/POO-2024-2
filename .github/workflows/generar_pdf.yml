@@ -13,15 +13,10 @@ jobs:
       - name: Checkout del repositorio
         uses: actions/checkout@v3
 
-      - name: Instalar dependencias de Latex y Pandoc
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive pandoc
-
       - name: Instalar Python y bibliotecas
         run: |
           sudo apt-get install -y python3 python3-pip
-          pip3 install fpdf
+          pip3 install -r scripts/requirements.txt
 
       - name: Ejecutar script para generar PDF
         run: |
