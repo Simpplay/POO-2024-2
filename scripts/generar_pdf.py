@@ -7,7 +7,7 @@ from pygments.formatters import *
 
 
 class TaskPDF(FPDF, HTMLMixin):
-    def add_cover(self, task_name):
+    def add_cover(self, task_name, part):
         self.add_page()
 
         # Professional Cover Page
@@ -16,7 +16,7 @@ class TaskPDF(FPDF, HTMLMixin):
         self.ln(20)
 
         self.set_font("Arial", "B", 16)
-        self.cell(0, 10, f"Tarea: {task_name}", align="C", ln=1)
+        self.cell(0, 10, f"{task_name} - {part}", align="C", ln=1)
         self.ln(30)
 
         self.set_font("Arial", "", 14)
@@ -104,7 +104,7 @@ def generate_task_pdfs(project_path, github_base_url):
                     part = subdir.replace(task_path, "").lstrip(os.sep)
 
                     pdf = TaskPDF()
-                    pdf.add_cover(task_dir)
+                    pdf.add_cover(task_dir, part)
 
                     for task_file in parts:
                         file_path = os.path.join(subdir, task_file)
