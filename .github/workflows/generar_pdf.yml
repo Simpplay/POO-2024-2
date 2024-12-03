@@ -39,8 +39,12 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "github-actions@github.com"
 
+      - name: Checkout de la rama
+        run: |
+          git checkout master  # Cambia a 'main' si tu repositorio usa esa rama
+
       - name: Hacer commit y push de los archivos PDF
         run: |
           git add pdf/
           git commit -m "Agregar archivos PDF generados"
-          git push origin main
+          git push origin master  # Cambia a 'main' si es necesario
