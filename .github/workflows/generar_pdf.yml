@@ -27,3 +27,20 @@ jobs:
       - name: Ejecutar script para generar PDF
         run: |
           python3 scripts/generar_pdf.py
+
+      - name: Subir artefactos
+        uses: actions/upload-artifact@v3
+        with:
+          name: pdf-tareas
+          path: pdf/
+
+      - name: Configurar Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions@github.com"
+
+      - name: Hacer commit y push de los archivos PDF
+        run: |
+          git add pdf/
+          git commit -m "Agregar archivos PDF generados"
+          git push origin main
