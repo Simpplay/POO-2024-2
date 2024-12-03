@@ -3,13 +3,16 @@ name: Generar PDF de Tareas
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
     inputs:
       tags:
-        description: 'Test scenario tags'
+        description: "Test scenario tags"
         required: false
         type: boolean
+
+permissions:
+  contents: write # Permiso de escritura para `GITHUB_TOKEN`
 
 jobs:
   build-pdf:
