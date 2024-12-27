@@ -2,6 +2,7 @@ package Tareas.Tarea3.Parte1;
 
 import javax.swing.*;
 import java.awt.*;
+import java.beans.PropertyVetoException;
 import java.lang.reflect.Constructor;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -39,6 +40,11 @@ public abstract class MDIElement<T> {
         frame.add(getPanel(parent));
         frame.pack();
         frame.setVisible(true);
+        try {
+            frame.setSelected(true);
+        } catch (PropertyVetoException e) {
+            throw new RuntimeException(e);
+        }
         return frame;
     }
 
