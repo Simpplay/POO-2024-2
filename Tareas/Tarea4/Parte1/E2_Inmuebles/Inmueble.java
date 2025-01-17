@@ -1,4 +1,4 @@
-package Tareas.Tarea4.Ejercicio2_Paquetes_y_metodos_de_acceso.Inmuebles;
+package Tareas.Tarea4.Parte1.E2_Inmuebles;
 
 public abstract class Inmueble {
 

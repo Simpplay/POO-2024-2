@@ -1,4 +1,4 @@
-package Tareas.Tarea4.Ejercicio2_Paquetes_y_metodos_de_acceso.Inmuebles.Vivienda;
+package Tareas.Tarea4.Parte1.E2_Inmuebles.Vivienda;
 
 public class Apartaestudio extends AbstractApartamento {
     public Apartaestudio(int id, int area, String direccion, int banos) {

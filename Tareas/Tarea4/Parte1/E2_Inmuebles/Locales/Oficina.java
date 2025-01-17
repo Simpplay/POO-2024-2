@@ -1,4 +1,4 @@
-package Tareas.Tarea4.Ejercicio2_Paquetes_y_metodos_de_acceso.Inmuebles.Locales;
+package Tareas.Tarea4.Parte1.E2_Inmuebles.Locales;
 
 public class Oficina extends AbstractLocales{
     protected boolean gobierno;

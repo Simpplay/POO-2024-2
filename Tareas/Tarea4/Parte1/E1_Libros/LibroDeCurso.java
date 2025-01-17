@@ -1,4 +1,4 @@
-package Tareas.Tarea4.Ejercicio1_Herencia.Libros;
+package Tareas.Tarea4.Parte1.E1_Libros;
 
 public abstract class LibroDeCurso extends Libro {
     private String curso;

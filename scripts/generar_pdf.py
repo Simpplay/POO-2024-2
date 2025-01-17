@@ -88,47 +88,50 @@ class TaskPDF(FPDF, HTMLMixin):
         self.cell(0, 10, f"Enlace: {github_url}", ln=1, link=github_url)
 
 
+
+def add_to_pdf(pdf, file_path):
+    relative_path = os.path.relpath(file_path, project_directory)
+    github_url = f"{github_repository_url}/{relative_path.replace(os.sep, '/')}"
+
+    if file_path.endswith(".java"):
+        pdf.add_code_file(file_path, github_url)
+    elif file_path.endswith(".png"):
+        pdf.add_image_file(file_path, github_url)
+
 # Function to generate PDF for each task
-def generate_task_pdfs(project_path, github_base_url):
+def generate_task_pdfs(project_path):
     tareas_path = os.path.join(project_path, "Tareas")
-    for root, dirs, files in os.walk(tareas_path):
-        if root == tareas_path:  # Only process task directories (e.g., Tarea1, Tarea2)
-            for task_dir in dirs:
-                task_path = os.path.join(project_path, tareas_path, task_dir)
+    pdf_output_path = os.path.join(project_path, "pdf")
 
-                for subdir, _, parts in os.walk(task_path):
+    # Crear la carpeta pdf si no existe
+    if not os.path.exists(pdf_output_path):
+        os.makedirs(pdf_output_path)
 
-                    if task_path == subdir:
-                        continue
+    for tarea_path in [ f.path for f in os.scandir(tareas_path) if f.is_dir() ]:
+        for parte_path in [ f.path for f in os.scandir(tarea_path) if f.is_dir() ]:
+            tarea = os.path.basename(tarea_path)
+            parte = os.path.basename(parte_path)
 
-                    part = subdir.replace(task_path, "").lstrip(os.sep)
+            pdf = TaskPDF()
+            pdf.add_cover(tarea, parte)
 
-                    pdf = TaskPDF()
-                    pdf.add_cover(task_dir, part)
+            def scan_files(path):
+                for file in os.scandir(path):
+                    if file.is_file():
+                        yield file.path
+                    else:
+                        yield from scan_files(file.path)
 
-                    for task_file in parts:
-                        file_path = os.path.join(subdir, task_file)
-                        relative_path = os.path.relpath(file_path, project_path)
-                        github_url = (
-                            f'{github_base_url}/{relative_path.replace(os.sep, "/")}'
-                        )
+            for file in scan_files(parte_path):
+                add_to_pdf(pdf, file)
+                
 
-                        if task_file.endswith(".java"):
-                            pdf.add_code_file(file_path, github_url)
-                        elif task_file.endswith(".png"):
-                            pdf.add_image_file(file_path, github_url)
+            # Ruta completa del archivo de salida PDF
+            output_path = os.path.join(pdf_output_path, f"{tarea}_{parte}.pdf")
 
-                        output_path = os.path.join(
-                            project_path, "pdf", f"{task_dir}_{part}.pdf"
-                        )
-
-                    # Guardar el archivo PDF
-                    # Crearlo en la carpeta pdf si no existe
-                    if not os.path.exists("pdf"):
-                        os.makedirs("pdf")
-
-                    pdf.output(output_path)
-                    print(f"PDF generado: {output_path}")
+            # Guardar el archivo PDF
+            pdf.output(output_path)
+            print(f"PDF generado: {output_path}")
 
 
 # Ruta del proyecto y base URL del repositorio de GitHub
@@ -136,4 +139,4 @@ project_directory = os.getcwd()
 github_repository_url = "https://github.com/Simpplay/POO-2024-2/tree/master/"
 
 # Generar PDFs para cada tarea
-generate_task_pdfs(project_directory, github_repository_url)
+generate_task_pdfs(project_directory)

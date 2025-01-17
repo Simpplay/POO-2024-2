@@ -1,6 +1,6 @@
-package Tareas.Tarea4.Ejercicio2_Paquetes_y_metodos_de_acceso.Inmuebles.Vivienda;
+package Tareas.Tarea4.Parte1.E2_Inmuebles.Vivienda;
 
-import Tareas.Tarea4.Ejercicio2_Paquetes_y_metodos_de_acceso.Inmuebles.Inmueble;
+import Tareas.Tarea4.Parte1.E2_Inmuebles.Inmueble;
 
 public abstract class AbstractVivienda extends Inmueble {
 

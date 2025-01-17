@@ -1,6 +1,6 @@
-package Tareas.Tarea4.Ejercicio2_Paquetes_y_metodos_de_acceso.Inmuebles.Locales;
+package Tareas.Tarea4.Parte1.E2_Inmuebles.Locales;
 
-import Tareas.Tarea4.Ejercicio2_Paquetes_y_metodos_de_acceso.Inmuebles.Inmueble;
+import Tareas.Tarea4.Parte1.E2_Inmuebles.Inmueble;
 
 public abstract class AbstractLocales extends Inmueble {
     public AbstractLocales(int id, int area, String direccion) {

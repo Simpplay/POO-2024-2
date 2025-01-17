@@ -1,7 +1,7 @@
-package Tareas.Tarea4.Ejercicio2_Paquetes_y_metodos_de_acceso.Inmuebles;
+package Tareas.Tarea4.Parte1.E2_Inmuebles;
 
-import Tareas.Tarea4.Ejercicio2_Paquetes_y_metodos_de_acceso.Inmuebles.Vivienda.Apartaestudio;
-import Tareas.Tarea4.Ejercicio2_Paquetes_y_metodos_de_acceso.Inmuebles.Vivienda.ApartamentoFamiliar;
+import Tareas.Tarea4.Parte1.E2_Inmuebles.Vivienda.Apartaestudio;
+import Tareas.Tarea4.Parte1.E2_Inmuebles.Vivienda.ApartamentoFamiliar;
 
 public class TestInmuebles {
 

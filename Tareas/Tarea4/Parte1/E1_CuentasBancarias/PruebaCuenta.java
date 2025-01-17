@@ -1,4 +1,4 @@
-package Tareas.Tarea4.Ejercicio1_Herencia.CuentasBancarias;
+package Tareas.Tarea4.Parte1.E1_CuentasBancarias;
 
 import java.util.Scanner;
 
